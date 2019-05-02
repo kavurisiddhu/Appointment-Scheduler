@@ -9,6 +9,8 @@ import com.matrix.codechallenge.springboot.web.utils.TransformUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Iterator;
+
 @Service
 public class AppointmentServicesImpl implements AppointmentServices {
 
@@ -19,9 +21,15 @@ public class AppointmentServicesImpl implements AppointmentServices {
     AppointmentRespository appointmentRespository;
 
     @Override
-    public void addAppointment(User user) {
+    public  String addAppointment(User user) {
         com.matrix.codechallenge.springboot.web.model.User userModel = TransformUtils.convertWebUserToDataUser(user);
-        userRepository.save(userModel);
+        userModel=userRepository.save(userModel);
+        String confirmationCode="";
+        Iterator it=userModel.getAppointments().iterator();
+        if(it.hasNext()){
+            confirmationCode=((Appointment)it.next()).getAppointment_id().toString();
+        }
+        return confirmationCode;
     }
 
     @Override

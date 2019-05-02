@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-
+<% String contextPath = request.getContextPath(); %>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <c:url value="/css/app/home.css" var="appCss"/>
@@ -11,6 +11,11 @@
 
 <html>
 <body>
+<c:if test="${null == user}">
+    <h3>${errorMessage}</h3>
+    Please try again later !
+</c:if>
+<c:if test="${null != user}">
 <h3>Welcom back, ${user.firstName}, ${user.lastName}. Below are your appointment details</h3>
 <table>
     <tr>
@@ -26,6 +31,8 @@
         <td>${user.appointment.appointmentDate}</td>
     </tr>
 </table>
+</c:if>
+<a href="${contextPath}/welcome"> Home Page</a>
 </body>
 
 </html>

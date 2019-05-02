@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-
+<% String contextPath = request.getContextPath(); %>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <c:url value="/css/app/home.css" var="appCss"/>
@@ -11,7 +11,15 @@
 
 <html>
 <body>
-<h3>This is appointment schedule confirmation page..</h3>
+<c:if test="${not status}">
+    <h3>${errorMessage}</h3>
+    Please try again later !
+</c:if>
+<c:if test="${status}">
+    <h3>Hi ${fullName}, your appointment has been successfully scheduled. Please note the confirmation code below</h3>
+    <p><h3>Confirmation code: ${confirmationCode}</h3></p>
+</c:if>
+<a href="${contextPath}/welcome"> Home Page</a>
 </body>
 
 </html>

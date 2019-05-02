@@ -27,8 +27,16 @@ public class AppointmentController {
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String setAppointment(HttpServletRequest req,
                                  @ModelAttribute("user") User user, BindingResult bindingResult, Model model) {
-        appointmentServices.addAppointment(user);
+        String confirmationCode=appointmentServices.addAppointment(user);
         String page = "appointment-confirmation";
+        if(null!=confirmationCode) {
+            model.addAttribute("fullName", user.getFirstName() + ", " + user.getLastName());
+            model.addAttribute("confirmationCode", confirmationCode);
+            model.addAttribute("status",true);
+        }else{
+            model.addAttribute("status",false);
+            model.addAttribute("errorMessage","Error scheduling appointment, please try again later..");
+        }
         return page;
     }
 
@@ -39,7 +47,11 @@ public class AppointmentController {
         String page = "appointment-details";
         System.out.println(confirmationCode);
         User user = (User) appointmentServices.getAppointmentDetails(confirmationCode);
-        model.addAttribute("user", user);
+        if(null==user){
+            model.addAttribute("errorMessage","Error in viewing appointment details..")
+        }else{
+            model.addAttribute("user", user);
+        }
         return page;
     }
 }
