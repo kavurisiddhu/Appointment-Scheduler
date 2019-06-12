@@ -46,9 +46,9 @@ public class AppointmentController {
 
         String page = "appointment-details";
         System.out.println(confirmationCode);
-        User user = (User) appointmentServices.getAppointmentDetails(confirmationCode);
+        User user = appointmentServices.getAppointmentDetails(confirmationCode);
         if(null==user){
-            model.addAttribute("errorMessage","Error in viewing appointment details..")
+            model.addAttribute("errorMessage","Error in viewing appointment details..");
         }else{
             model.addAttribute("user", user);
         }

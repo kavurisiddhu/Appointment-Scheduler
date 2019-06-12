@@ -5,6 +5,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
+@Table(name="t_appointment")
 public class Appointment {
 
     @Id

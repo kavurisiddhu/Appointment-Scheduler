@@ -7,10 +7,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="appointment-scheduler" />
+        <module name="Appointment-Scheduler" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="appointment-scheduler" target="1.8" />
+      <module name="Appointment-Scheduler" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>
