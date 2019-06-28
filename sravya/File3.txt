@@ -5,3 +5,11 @@ Final changes done
 
 
 Release3 Changes done
+
+
+$ git checkout new<TAB>
+Menu:  new/frabnotz   new/foo   new/bar
+
+
+$ git checkout foo<TAB>
+Menu:  new/foo   test/foo   ver/foo
