@@ -1,5 +1,12 @@
 Second file is created
 
+Branch naming conventions
+
+Use grouping tokens (words) at the beginning of your branch names.
+Define and use short lead tokens to differentiate branches in a way that is meaningful to your workflow.
+Use slashes to separate parts of your branch names.
+Do not use bare numbers as leading parts.
+Avoid long descriptive names for long-lived branches
 
 Thanks & Regards
 SravyaK
